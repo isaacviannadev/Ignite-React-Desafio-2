@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
 import { MovieCard } from './MovieCard';
-import { SideBar, selectedGenreId } from './SideBar';
 
 interface GenreResponseProps {
   id: number;
@@ -20,8 +19,9 @@ interface MovieProps {
   Runtime: string;
 }
 
-export function Content() {
-  const [selectedGenreId, setSelectedGenreId] = useState(1);
+export function Content(props: any) {
+  const selectedGenreId = props.genreId;
+
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>(
     {} as GenreResponseProps
